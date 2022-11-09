@@ -203,8 +203,11 @@ func addstate(l []*State,s *State) []*State{
 	}
 	s.lastlist=listid
 	if s.c==Split{
+		// Add the 2 output States
 		l=addstate(l,s.out)
 		l=addstate(l,s.out1)
+		// Return without adding the Split state again
+		return l
 	}
 	l=append(l,s)
 	return l
